@@ -1,0 +1,11 @@
+.smaller-image {
+    width:30%;
+    height:auto;
+    border-radius:50%;
+    float: right;
+    margin: 15px;
+}
+
+#imgList li {
+    list-style-type: none;
+}
