@@ -3,9 +3,37 @@
     height:auto;
     border-radius:50%;
     float: right;
-    margin: 15px;
+    margin: 8%;
 }
 
 #imgList li {
     list-style-type: none;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loadMore {
+    width: 200px;
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: blue;
+    transition: .3s;
+}
+#loadMore:hover {
+    color: blue;
+    background-color: #fff;
+    border: 1px solid blue;
+    text-decoration: none;
 }
