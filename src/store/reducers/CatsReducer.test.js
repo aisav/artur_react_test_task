@@ -1,6 +1,5 @@
 import * as types from '../actions/actionTypes';
 import catsReducer from './index';
-import initialState from "../initTestStore";
 
 describe('Cats Reducer', () => {
 

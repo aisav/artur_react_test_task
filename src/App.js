@@ -9,7 +9,7 @@ function App() {
   return (
       <React.Fragment>
         <BrowserRouter>
-          <Navbar />
+          <Navbar data-test='abcd' />
           <Switch>
             <Route path='/' exact >
               <Redirect to="/categories/1" />
