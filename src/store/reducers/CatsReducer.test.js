@@ -1,90 +1,20 @@
-import CatsReducer from "./CatsReducer";
-import * as actionType from "../actions/actionTypes";
+import * as types from '../actions/actionTypes';
+import catsReducer from './index';
+import initialState from "../initTestStore";
 
-describe("cats reducer", () => {
-  it("should return the initial state", () => {
-    expect(CatsReducer(undefined, {})).toEqual({
-      categories: null,
-      images: [],
-      isFinalPage: false
-    });
-  });
+describe('Cats Reducer', () => {
 
-  it("should store the categories", () => {
-    expect(
-      CatsReducer(
-        {
-          categories: null,
-          images: [],
-          isFinalPage: false
-        },
-        {
-          type: actionType.FETCH_CATEGORIES,
-          categoryItems: "some category array"
-        }
-      )
-    ).toEqual({
-      categories: "some category array",
-      images: [],
-      isFinalPage: false
-    });
-  });
 
-  it("should store the images at first load", () => {
-    expect(
-      CatsReducer(
-        {
-          categories: null,
-          images: [],
-          isFinalPage: false
-        },
-        {
-          type: actionType.FIRST_FETCH_IMAGES,
-          images: "some image array"
-        }
-      )
-    ).toEqual({
-      categories: null,
-      images: "some image array",
-      isFinalPage: false
-    });
-  });
-  it("should store the images onPress more button", () => {
-    expect(
-      CatsReducer(
-        {
-          categories: null,
-          images: [],
-          isFinalPage: false
-        },
-        {
-          type: actionType.FETCH_IMAGES,
-          images: "some image array"
-        }
-      )
-    ).toEqual({
-      categories: null,
-      images: ["some image array"],
-      isFinalPage: false
-    });
-  });
+    it('Should return new state with all categories', () => {
 
-  it("should set the isFinalPage to true", () => {
-    expect(
-      CatsReducer(
-        {
-          categories: null,
-          images: [],
-          isFinalPage: false
-        },
-        {
-          type: actionType.SET_IS_FINAL
-        }
-      )
-    ).toEqual({
-      categories: null,
-      images: [],
-      isFinalPage: true
+        const categories = [{"id":5,"name":"boxes"},{"id":15,"name":"clothes"},{"id":1,"name":"hats"},{"id":14,"name":"sinks"},{"id":2,"name":"space"},{"id":4,"name":"sunglasses"},{"id":7,"name":"ties"}]
+
+        const newState = catsReducer(undefined, {
+            type: types.FETCH_CATEGORIES,
+            categoryItems: categories
+        });
+        expect(newState.cats.categories).toEqual( categories);
+
     });
-  });
+
 });
