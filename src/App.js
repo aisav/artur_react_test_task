@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
-import Home from './components/Home/Home';
+import Home from './components/Home';
 
 function App() {
   return (

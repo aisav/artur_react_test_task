@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 import {fetchCategoryItems} from '../../store/actions';
@@ -14,7 +14,6 @@ import { IconContext } from 'react-icons';
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const [error, setError] = useState();
   const dispatch = useDispatch();
   let categories = useSelector(state => state.cats.categories);
   const showSidebar = () => setSidebar(!sidebar);
@@ -24,25 +23,12 @@ function Navbar() {
       try {
         await dispatch(fetchCategoryItems());
       } catch (err) {
-        setError(err.message);
+        console.log(err.message);
       }
     }
     loadCategories();
   }, [dispatch]);
 
-  const renderCategories = () => {
-     const cats = categories && categories.map((cat, index) => {
-      const path = '/' + index
-      return (
-          <li key={index} className='nav-text'>
-            <Link to={path}>
-              <span>{cat.title}</span>
-            </Link>
-          </li>
-      );
-    })
-    return cats
-  }
 
   return (
     <>

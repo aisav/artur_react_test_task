@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
 import {firstLoadImages, fetchImages} from '../../store/actions';
@@ -13,7 +13,6 @@ const Home = props => {
     if (!catId)
         catId=1
 
-    let categories = useSelector(state => state.cats.categories);
     const images = useSelector(state => state.cats.images);
 
 
@@ -41,7 +40,7 @@ const Home = props => {
         loadMoreImages(catId)
     }
 
-    const renderImages =() => ( images.map(photo => <li key={photo.id}><img className="smaller-image" src={photo.url}/></li>) )
+    const renderImages =() => ( images.map(photo => <li key={photo.id}><img alt={photo.name} className="smaller-image" src={photo.url}/></li>) )
 
     return (
         <React.Fragment>
@@ -49,8 +48,7 @@ const Home = props => {
             <ul id="imgList">{renderImages()}</ul>
             </div>
             <div>
-                <a  id="loadMore" onClick={handleShowMoreImages}>Load More</a>
-            {/*<button onClick={handleShowMoreImages}>Load more</button>*/}
+                <button id="loadMore" onClick={handleShowMoreImages}>Load more</button>
             </div>
         </React.Fragment>
     );
